@@ -11,21 +11,17 @@
 #include <GLFW/glfw3.h>
 
 namespace SwordSong {
-	TileSet::TileSet(const char* fileName) {
-		texture = 0;
+	TileSet::TileSet(const char* fileName, int gridWidth, int gridHeight) {
 		this->fileName = fileName;
-		model = new Model();
-		shader = new Shader();
+		model = std::make_unique<Model>();
+		shader = std::make_unique<Shader>(gridWidth, gridHeight);
 	}
 
 	TileSet::~TileSet() {
-		delete model;
-		delete shader;
 	}
 
 	void TileSet::Load() {
 		model->Initialize();
-		
 
 		std::string path = "E:/Projects/CPP/SwordSong/Resources/Shaders/";
 		shader->Load((path + "shader.vs").c_str(), (path + "shader.fs").c_str());
@@ -39,15 +35,24 @@ namespace SwordSong {
 		}
 
 		if (image != 0) {
-			glGenTextures(1, &texture);
 
-			glBindTexture(GL_TEXTURE_2D, texture);
+			for (int x = 0; x < 16; x++) {
+				for (int y = 0; y < 16; y++) {
+					glGenTextures(1, &texture[x][y]);
+					glBindTexture(GL_TEXTURE_2D, texture[x][y]);
 
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-			glGenerateMipmap(GL_TEXTURE_2D);
+					glPixelStorei(GL_UNPACK_ROW_LENGTH, 256);
+					glPixelStorei(GL_UNPACK_SKIP_PIXELS, x * 16);
+					glPixelStorei(GL_UNPACK_SKIP_ROWS, y * 16);
+					glPixelStorei(GL_UNPACK_ALIGNMENT, 0);
+
+					glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 16, 16, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+					glGenerateMipmap(GL_TEXTURE_2D);
+				}
+			}
 
 			glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -56,21 +61,25 @@ namespace SwordSong {
 	}
 
 	void TileSet::Use() {
-		glBindTexture(GL_TEXTURE_2D, texture);
-		shader->Use();
+
 	}
 
-	void TileSet::DrawTile(float tx, float ty, float r, float g, float b, float x, float y) {
-		float a = 1.0f / 16.0f;
-		float xu = a / 2.0f, yu = a;
+	void TileSet::DrawTile(int tx, int ty, float r, float g, float b, float x, float y) {
+		glBindTexture(GL_TEXTURE_2D, texture[tx][ty]);
+		shader->Use();
+
+		float xu = (1.0f / 16.0f), yu = (1.0f / 16.0f);
 
 		shader->SetVec3("color", r, g, b);
-		shader->SetVec2("offset", tx * a, ty * a);
-		shader->SetVec2("pos", x * xu, y * yu);
+		shader->SetPosition((x * xu), (y * yu));
 		model->Render();
 	}
 
 	void TileSet::DrawTile(Tile tile, TileColor color, TilePoint location) {
 		DrawTile(tile.tx, tile.ty, color.r, color.g, color.b, location.x, location.y);
+	}
+
+	void TileSet::DrawTile(ColoredTile tile, TilePoint location) {
+		DrawTile(tile.tile, tile.color, location);
 	}
 }

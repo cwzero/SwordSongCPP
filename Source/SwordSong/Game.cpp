@@ -1,11 +1,12 @@
 #include "SwordSong/Game.h"
+#include "SwordSong/TileGrid.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace SwordSong {
-	Game::Game() {
-
+	Game::Game(std::shared_ptr<TileGrid> tileGrid) {
+		this->tileGrid = tileGrid;
 	}
 
 	Game::~Game() {

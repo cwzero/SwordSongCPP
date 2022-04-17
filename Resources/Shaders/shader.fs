@@ -11,7 +11,7 @@ void main()
 {
 	FragColor = texture2D(texture1, TexCoord) * vec4(ourColor, 1.0);
 	
-	if (FragColor.w < 1.0) {
+	if (FragColor.a < 0.5) {
 		discard;
 	}
 }

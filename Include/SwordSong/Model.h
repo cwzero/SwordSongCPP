@@ -9,6 +9,7 @@ namespace SwordSong {
 		virtual void Initialize();
 		virtual void Render();
 	private:
+		float width, height;
 		unsigned int VBO;
 		unsigned int VAO;
 		unsigned int EBO;

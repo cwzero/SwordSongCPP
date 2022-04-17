@@ -19,6 +19,8 @@ namespace SwordSong {
 		virtual void SwapBuffers();
 		virtual void ProcessInput();
 
+		virtual void GetSize(int *width, int *height);
+
 		virtual bool ShouldClose();
 	private:
 		GLFWwindow* window;

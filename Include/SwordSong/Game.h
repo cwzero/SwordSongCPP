@@ -1,9 +1,12 @@
 #pragma once
 
+#include <memory>
+
 namespace SwordSong {
+	class TileGrid;	
 	class Game {
 		public:
-			Game();
+			Game(std::shared_ptr<TileGrid> tileGrid);
 			virtual ~Game();
 
 			virtual void Initialize();
@@ -12,6 +15,6 @@ namespace SwordSong {
 			virtual void Update();
 			virtual void Render(double delta);
 		private:
-
+			std::shared_ptr<TileGrid> tileGrid;
 	};
 }

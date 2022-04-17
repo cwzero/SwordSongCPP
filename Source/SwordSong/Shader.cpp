@@ -8,9 +8,19 @@
 #include <iostream>
 #include <string>
 
-namespace SwordSong {
-	Shader::Shader() {
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/vec3.hpp> // glm::vec3
+#include <glm/vec4.hpp> // glm::vec4
+#include <glm/mat4x4.hpp> // glm::mat4
+#include <glm/ext/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale
+#include <glm/ext/matrix_clip_space.hpp> // glm::perspective
+#include <glm/ext/scalar_constants.hpp> // glm::pi
 
+namespace SwordSong {
+	Shader::Shader(float wr, float hr) {
+		this->wr = wr;
+		this->hr = hr;
 	}
 
 	Shader::~Shader() {
@@ -126,5 +136,22 @@ namespace SwordSong {
 	void Shader::SetVec2(const std::string &name, float x, float y) const
 	{
 		glUniform2f(glGetUniformLocation(ID, name.c_str()), x, y);
+	}
+
+	void Shader::SetPosition(float x, float y) const
+	{
+		GLuint modelMatIdx = glGetUniformLocation(ID, "modelMat");
+		GLuint viewMatIdx = glGetUniformLocation(ID, "viewMat");
+		GLuint projMatIdx = glGetUniformLocation(ID, "projMat");
+
+		glm::mat4 Projection = glm::mat4(1.0f);
+		glm::mat4 View = glm::mat4(1.0f);
+		View = glm::scale(View, glm::vec3(32/wr, 32/hr, 1.0f));
+	    glm::mat4 Model = glm::mat4(1.0f);
+		Model = glm::translate(Model, glm::vec3(x, y, 0));
+
+		glUniformMatrix4fv(modelMatIdx, 1, GL_FALSE, glm::value_ptr(Model));
+		glUniformMatrix4fv(viewMatIdx, 1, GL_FALSE, glm::value_ptr(View));
+		glUniformMatrix4fv(projMatIdx, 1, GL_FALSE, glm::value_ptr(Projection));
 	}
 }

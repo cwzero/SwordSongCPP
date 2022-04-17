@@ -5,7 +5,7 @@
 namespace SwordSong {
 	class Shader {
 	public:
-		Shader();
+		Shader(float wr, float hr);
 		virtual ~Shader();
 		
 		virtual void Load(const char* vertexPath, const char* fragmentPath);
@@ -17,7 +17,10 @@ namespace SwordSong {
 		virtual void SetVec4(const std::string &name, float x, float y, float z, float a) const;
 		virtual void SetVec3(const std::string &name, float x, float y, float z) const;
 		virtual void SetVec2(const std::string &name, float x, float y) const;
+
+		virtual void SetPosition(float x, float y) const;
 	private:
+		float wr, hr;
 		unsigned int ID;
 		const char* vertexPath;
 		const char* fragmentPath;

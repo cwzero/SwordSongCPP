@@ -1,13 +1,13 @@
 #pragma once
 
+#include <memory>
+
 namespace SwordSong {
-	class Model;
-	class Shader;
-	class TileSet;
+	class TileGrid;
 
 	class RenderEngine {
 	public:
-		RenderEngine();
+		RenderEngine(std::shared_ptr<TileGrid> tileGrid);
 		virtual ~RenderEngine();
 
 		void Initialize();
@@ -15,8 +15,6 @@ namespace SwordSong {
 
 		void Draw();
 	private:
-		Model *model;
-		Shader *shader;
-		TileSet *tileSet;
+		std::shared_ptr<TileGrid> tileGrid;
 	};
 }

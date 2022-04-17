@@ -1,6 +1,7 @@
 #include "SwordSong/Engine.h"
 #include "SwordSong/Game.h"
 #include "SwordSong/RenderEngine.h"
+#include "SwordSong/TileGrid.h"
 #include "SwordSong/Window.h"
 
 #include <iostream>
@@ -11,8 +12,6 @@
 
 namespace SwordSong {
 	Engine::Engine() {
-		game = std::make_unique<Game>();
-		renderEngine = std::make_unique<RenderEngine>();
 		window = std::make_unique<Window>();
 	}
 
@@ -23,6 +22,13 @@ namespace SwordSong {
 	void Engine::Initialize() {
 		window->Initialize();
 		window->MakeCurrent();
+
+		int width, height;
+		window->GetSize(&width, &height);
+		tileGrid = std::make_shared<TileGrid>(width, height);
+
+		game = std::make_unique<Game>(tileGrid);
+		renderEngine = std::make_unique<RenderEngine>(tileGrid);
 
 		renderEngine->Initialize();
 
@@ -66,7 +72,7 @@ namespace SwordSong {
 	}
 
 	void Engine::Render(double delta) {
-		renderEngine->Draw();
 		game->Render(delta);
+		renderEngine->Draw();
 	}
 }

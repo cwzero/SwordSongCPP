@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_subdirectory(Source)
-add_subdirectory("${PROJECT_SOURCE_DIR}/Lib/glfw")
+add_subdirectory(Lib/glfw)
+add_subdirectory(Lib/glm)

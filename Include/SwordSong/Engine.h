@@ -5,6 +5,7 @@
 namespace SwordSong {
 	class Game;
 	class RenderEngine;
+	class TileGrid;
 	class Window;
 
 	class Engine {
@@ -23,6 +24,7 @@ namespace SwordSong {
 	private:
 		std::unique_ptr<Game> game;
 		std::unique_ptr<RenderEngine> renderEngine;
+		std::shared_ptr<TileGrid> tileGrid;
 		std::unique_ptr<Window> window;
 	};
 }

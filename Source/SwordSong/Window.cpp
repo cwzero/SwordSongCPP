@@ -46,7 +46,14 @@ namespace SwordSong {
 
 		// TODO: find a size that is close, and is appropriate to hold a tile grid
 		// TODO: pass window size into tilegrid
-		window = glfwCreateWindow((int)(mode->width * 0.8), (int)(mode->height * 0.8), "Sword Song", NULL, NULL);
+
+		int w = (int)(mode->width * 0.8);
+		w -= (w % 16);
+
+		int h = (int)(mode -> height * 0.8);
+		h -= (h % 16);
+
+		window = glfwCreateWindow(w, h, "Sword Song", NULL, NULL);
 		if (!window)
 		{
 			glfwTerminate();
@@ -67,7 +74,7 @@ namespace SwordSong {
 		glfwSwapInterval(1);
 
 		int width, height;
-		glfwGetFramebufferSize(window, &width, &height);
+		GetSize(&width, &height);		
 		glViewport(0, 0, width, height);
 
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -95,5 +102,9 @@ namespace SwordSong {
 
 	bool Window::ShouldClose() {
 		return glfwWindowShouldClose(window);
+	}
+
+	void Window::GetSize(int *width, int *height) {
+		glfwGetWindowSize(window, width, height);
 	}
 }
