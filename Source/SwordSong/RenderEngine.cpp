@@ -6,7 +6,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-
 #include <string>
 #include <iostream>
 #include <cstdio>
@@ -34,10 +33,11 @@ namespace SwordSong {
 		Tile tile = {0, 4};
 		TileColor color = {1, 1, 1};
 
-		tileSet->DrawTile(tile, color, {0, 0});
-		tileSet->DrawTile(tile, color, {0, 1});
-		tileSet->DrawTile(tile, color, {1, 0});
-		tileSet->DrawTile(tile, color, {1, 1});
+		for (int x = -31; x < 32; x++) {
+			for (int y = -15; y < 16; y++) {
+				tileSet->DrawTile(tile, color, {(float)x, (float)y});
+			}
+		}
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}

@@ -60,7 +60,7 @@ namespace SwordSong {
 		shader->Use();
 	}
 
-	void TileSet::DrawTile(int tx, int ty, float r, float g, float b, int x, int y) {
+	void TileSet::DrawTile(float tx, float ty, float r, float g, float b, float x, float y) {
 		float a = 1.0f / 16.0f;
 		float xu = a / 2.0f, yu = a;
 

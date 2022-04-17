@@ -2,15 +2,15 @@
 
 namespace SwordSong {
 	typedef struct {
-		int tx, ty;
+		float tx, ty;
 	} Tile;
 
 	typedef struct {
-		int r, g, b;
+		float r, g, b;
 	} TileColor;
 
 	typedef struct {
-		int x, y;
+		float x, y;
 	} TilePoint;
 
 	class Model;
@@ -24,7 +24,7 @@ namespace SwordSong {
 		virtual void Load();
 		virtual void Use();
 
-		virtual void DrawTile(int tx, int ty, float r, float g, float b, int x, int y);
+		virtual void DrawTile(float tx, float ty, float r, float g, float b, float x, float y);
 		virtual void DrawTile(Tile tile, TileColor color, TilePoint location);
 
 		unsigned int texture;

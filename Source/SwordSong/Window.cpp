@@ -44,6 +44,8 @@ namespace SwordSong {
 
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
+		// TODO: find a size that is close, and is appropriate to hold a tile grid
+		// TODO: pass window size into tilegrid
 		window = glfwCreateWindow((int)(mode->width * 0.8), (int)(mode->height * 0.8), "Sword Song", NULL, NULL);
 		if (!window)
 		{
