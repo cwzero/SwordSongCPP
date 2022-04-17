@@ -11,16 +11,16 @@ namespace SwordSong {
 	class Engine {
 	public:
 		Engine();
-		virtual ~Engine();
+		~Engine();
 
-		virtual void Initialize();
-		virtual void Shutdown();
+		void Initialize();
+		void Shutdown();
 
-		virtual void Run();
-		virtual bool Loop();
+		void Run();
+		bool Loop();
 
-		virtual void Update();
-		virtual void Render(double delta);
+		void Update();
+		void Render(double delta);
 	private:
 		std::unique_ptr<Game> game;
 		std::unique_ptr<RenderEngine> renderEngine;

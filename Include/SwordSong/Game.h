@@ -7,13 +7,13 @@ namespace SwordSong {
 	class Game {
 		public:
 			Game(std::shared_ptr<TileGrid> tileGrid);
-			virtual ~Game();
+			~Game();
 
-			virtual void Initialize();
-			virtual void Shutdown();
+			void Initialize();
+			void Shutdown();
 
-			virtual void Update();
-			virtual void Render(double delta);
+			void Update();
+			void Render(double delta);
 		private:
 			std::shared_ptr<TileGrid> tileGrid;
 	};

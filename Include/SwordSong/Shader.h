@@ -6,19 +6,19 @@ namespace SwordSong {
 	class Shader {
 	public:
 		Shader(float wr, float hr);
-		virtual ~Shader();
+		~Shader();
 		
-		virtual void Load(const char* vertexPath, const char* fragmentPath);
-		virtual void Use();
+		void Load(const char* vertexPath, const char* fragmentPath);
+		void Use();
 
-	    virtual void SetBool(const std::string &name, bool value) const;  
-    	virtual void SetInt(const std::string &name, int value) const;   
-    	virtual void SetFloat(const std::string &name, float value) const;
-		virtual void SetVec4(const std::string &name, float x, float y, float z, float a) const;
-		virtual void SetVec3(const std::string &name, float x, float y, float z) const;
-		virtual void SetVec2(const std::string &name, float x, float y) const;
+	    void SetBool(const std::string &name, bool value) const;  
+    	void SetInt(const std::string &name, int value) const;   
+    	void SetFloat(const std::string &name, float value) const;
+		void SetVec4(const std::string &name, float x, float y, float z, float a) const;
+		void SetVec3(const std::string &name, float x, float y, float z) const;
+		void SetVec2(const std::string &name, float x, float y) const;
 
-		virtual void SetPosition(float x, float y) const;
+		void SetPosition(float x, float y) const;
 	private:
 		float wr, hr;
 		unsigned int ID;

@@ -8,7 +8,7 @@ namespace SwordSong {
 	class RenderEngine {
 	public:
 		RenderEngine(std::shared_ptr<TileGrid> tileGrid);
-		virtual ~RenderEngine();
+		~RenderEngine();
 
 		void Initialize();
 		void Shutdown();

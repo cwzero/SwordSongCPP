@@ -10,15 +10,15 @@ namespace SwordSong {
 	class TileGrid {
 	public:
 		TileGrid(int width, int height);
-		virtual ~TileGrid();
+		~TileGrid();
 
-		virtual void Load();
+		void Load();
 
-		virtual void Draw();
+		void Draw();
 
-		virtual void GetSize(int *width, int *height);
+		void GetSize(int *width, int *height);
 
-		virtual void SetTile(int x, int y, ColoredTile tile);
+		void SetTile(int x, int y, ColoredTile tile);
 	private:
 		int width, height;
 		std::unique_ptr<TileSet> tileSet;

@@ -8,20 +8,20 @@ namespace SwordSong {
 	class Window {
 	public:
 		Window();
-		virtual ~Window();
+		~Window();
 
-		virtual void Initialize();
-		virtual void Shutdown();
+		void Initialize();
+		void Shutdown();
 
-		virtual void MakeCurrent();
-		virtual void Clear();
-		virtual double GetDelta();
-		virtual void SwapBuffers();
-		virtual void ProcessInput();
+		void MakeCurrent();
+		void Clear();
+		double GetDelta();
+		void SwapBuffers();
+		void ProcessInput();
 
-		virtual void GetSize(int *width, int *height);
+		void GetSize(int *width, int *height);
 
-		virtual bool ShouldClose();
+		bool ShouldClose();
 	private:
 		GLFWwindow* window;
 	};

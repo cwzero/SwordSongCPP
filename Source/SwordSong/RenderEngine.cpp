@@ -4,7 +4,6 @@
 namespace SwordSong {
 	RenderEngine::RenderEngine(std::shared_ptr<TileGrid> tileGrid) {
 		this->tileGrid = tileGrid;
-		tileGrid->SetTile(0, 0, {{0, 4}, {1, 1, 1}});
 	}
 
 	RenderEngine::~RenderEngine() {

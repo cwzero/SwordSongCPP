@@ -4,10 +4,10 @@ namespace SwordSong {
 	class Model {
 	public:
 		Model();
-		virtual ~Model();
+		~Model();
 
-		virtual void Initialize();
-		virtual void Render();
+		void Initialize();
+		void Render();
 	private:
 		float width, height;
 		unsigned int VBO;
