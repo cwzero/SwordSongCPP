@@ -1,4 +1,4 @@
-add_executable(SwordSong Main.cpp SwordSong.cpp Engine.cpp Game.cpp Model.cpp RenderEngine.cpp Shader.cpp TileGrid.cpp TileSet.cpp Window.cpp)
+add_executable(SwordSong Main.cpp SwordSong.cpp Engine.cpp Game.cpp GameWorld.cpp Model.cpp RenderEngine.cpp Shader.cpp TileGrid.cpp TileSet.cpp Window.cpp)
 target_include_directories(SwordSong PUBLIC "${PROJECT_SOURCE_DIR}/Include")
 
 find_package(OpenGL REQUIRED)

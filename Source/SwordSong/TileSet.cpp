@@ -1,6 +1,7 @@
 #include "SwordSong/TileSet.h"
 #include "SwordSong/Model.h"
 #include "SwordSong/Shader.h"
+#include "SwordSong/SwordSong.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
@@ -23,11 +24,10 @@ namespace SwordSong {
 	void TileSet::Load() {
 		model->Initialize();
 
-		std::string path = "E:/Projects/CPP/SwordSong/Resources/Shaders/";
-		shader->Load((path + "shader.vs").c_str(), (path + "shader.fs").c_str());
+		shader->Load((SourcePath + "/Resources/Shaders/shader.vs").c_str(), (SourcePath + "/Resources/Shaders/shader.fs").c_str());
 
 		int width, height, comp;
-		unsigned char* image = stbi_load(("../../Resources/Textures/" + std::string(fileName)).c_str(), &width, &height, &comp, STBI_rgb_alpha);
+		unsigned char* image = stbi_load((SourcePath + "/Resources/Textures/" + std::string(fileName)).c_str(), &width, &height, &comp, STBI_rgb_alpha);
 		
 		if (image == 0) {
 			std::cout << stbi_failure_reason() << std::endl;

@@ -1,0 +1,7 @@
+#pragma once
+
+#include <string>
+
+namespace SwordSong {
+	static std::string SourcePath = "${CMAKE_SOURCE_DIR}";
+}
