@@ -18,6 +18,8 @@ namespace SwordSong {
 		void DrawTile(int tx, int ty, float r, float g, float b, float x, float y);
 		void DrawTile(Tile tile, TileColor color, TilePoint location);
 		void DrawTile(ColoredTile tile, TilePoint location);
+		void DrawTile(Tile tile, TileColor color, int x, int y);
+		void DrawTile(ColoredTile tile, int x, int y);
 
 		unsigned int texture[16][16];
 	private:

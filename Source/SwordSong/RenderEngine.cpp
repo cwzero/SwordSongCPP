@@ -2,8 +2,8 @@
 #include "SwordSong/TileGrid.h"
 
 namespace SwordSong {
-	RenderEngine::RenderEngine(std::shared_ptr<TileGrid> tileGrid) {
-		this->tileGrid = tileGrid;
+	RenderEngine::RenderEngine(std::shared_ptr<TileGrid> grid) {
+		this->grid = grid;
 	}
 
 	RenderEngine::~RenderEngine() {
@@ -11,7 +11,7 @@ namespace SwordSong {
 	}
 
 	void RenderEngine::Initialize() {
-		tileGrid->Load();
+		grid->Load();
 	}
 
 	void RenderEngine::Shutdown() {
@@ -19,6 +19,6 @@ namespace SwordSong {
 	}
 
 	void RenderEngine::Draw() {
-		tileGrid->Draw();
+		grid->Draw();
 	}
 }

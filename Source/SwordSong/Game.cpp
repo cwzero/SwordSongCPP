@@ -1,12 +1,18 @@
 #include "SwordSong/Game.h"
+#include "SwordSong/GameWorld.h"
+#include "SwordSong/Player.h"
+#include "SwordSong/PlayerView.h"
 #include "SwordSong/TileGrid.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace SwordSong {
-	Game::Game(std::shared_ptr<TileGrid> tileGrid) {
-		this->tileGrid = tileGrid;
+	Game::Game(std::shared_ptr<TileGrid> grid) {
+		this->grid = grid;
+		this->world = std::make_unique<GameWorld>();
+		this->player = std::make_shared<Player>();
+		this->view = std::make_unique<PlayerView>(player);
 	}
 
 	Game::~Game() {
@@ -26,11 +32,6 @@ namespace SwordSong {
 	}
 
 	void Game::Render(double delta) {
-		tileGrid->SetTile( 0,  0, {{0,  4}, {1, 1, 1}});
-		tileGrid->SetTile( 1,  1, {{0,  5}, {1, 0, 1}});
-		tileGrid->SetTile( 0,  1, {{0, 11}, {1, 1, 1}});
-		tileGrid->SetTile(-1, -1, {{0,  6}, {0, 1, 1}});
-		tileGrid->SetTile( 1,  0, {{1, 11}, {1, 1, 1}});
-		tileGrid->SetTile( 0, -1, {{2, 11}, {1, 1, 0}});
+		this->view->Render(*world, *grid);
 	}
 }

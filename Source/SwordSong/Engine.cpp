@@ -25,10 +25,10 @@ namespace SwordSong {
 
 		int width, height;
 		window->GetSize(&width, &height);
-		tileGrid = std::make_shared<TileGrid>(width, height);
+		grid = std::make_shared<TileGrid>(width, height);
 
-		game = std::make_unique<Game>(tileGrid);
-		renderEngine = std::make_unique<RenderEngine>(tileGrid);
+		game = std::make_unique<Game>(grid);
+		renderEngine = std::make_unique<RenderEngine>(grid);
 
 		renderEngine->Initialize();
 

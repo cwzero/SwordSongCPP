@@ -7,7 +7,7 @@ namespace SwordSong {
 
 	class RenderEngine {
 	public:
-		RenderEngine(std::shared_ptr<TileGrid> tileGrid);
+		RenderEngine(std::shared_ptr<TileGrid> grid);
 		~RenderEngine();
 
 		void Initialize();
@@ -15,6 +15,6 @@ namespace SwordSong {
 
 		void Draw();
 	private:
-		std::shared_ptr<TileGrid> tileGrid;
+		std::shared_ptr<TileGrid> grid;
 	};
 }

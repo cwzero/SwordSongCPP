@@ -75,6 +75,14 @@ namespace SwordSong {
 		model->Render();
 	}
 
+	void TileSet::DrawTile(Tile tile, TileColor color, int x, int y) {
+		DrawTile(tile.tx, tile.ty, color.r, color.g, color.b, x, y);
+	}
+
+	void TileSet::DrawTile(ColoredTile tile, int x, int y) {
+		DrawTile(tile.tile, tile.color, x, y);
+	}
+
 	void TileSet::DrawTile(Tile tile, TileColor color, TilePoint location) {
 		DrawTile(tile.tx, tile.ty, color.r, color.g, color.b, location.x, location.y);
 	}

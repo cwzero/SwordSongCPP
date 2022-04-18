@@ -10,7 +10,7 @@ namespace SwordSong {
 	} TileColor;
 
 	typedef struct {
-		float x, y;
+		int x, y;
 	} TilePoint;
 
 	typedef struct {
