@@ -4,17 +4,30 @@
 #include "SwordSong/TileGrid.h"
 
 namespace SwordSong {
-	PlayerView::PlayerView(std::shared_ptr<Player> player) {
+	PlayerView::PlayerView(std::shared_ptr<Player> player, int width, int height) {
 		this->player = player;
+		this->width = width;
+		this->height = height;
 	}
 
 	void PlayerView::Render(GameWorld& world, TileGrid& grid) {
-		player->Draw(grid, {0, 0});
-		/*grid.SetTile({ {0,  4}, {1, 1, 1} }, { 0, 0 });
-		grid.SetTile({ {0,  5}, {1, 0, 1} }, { 1, 1 });
-		grid.SetTile({ {0, 11}, {1, 1, 1} }, { 0, 1 });
-		grid.SetTile({ {0,  6}, {0, 1, 1} }, { -1, -1 });
-		grid.SetTile({ {1, 11}, {1, 1, 1} }, { 1, 0 });
-		grid.SetTile({ {2, 11}, {1, 1, 0} }, { 0, -1 });*/
+		int xm = width / 2;
+		int ym = width / 2;
+
+		int px = player->GetX();
+		int py = player->GetY();
+		int pz = player->GetZ();
+
+		for (int x = -xm; x < xm; x++) {
+			for (int y = -ym; y < ym; y++) {
+				int tx = px + x;
+				int ty = py + y;
+
+				Drawable* d = world.GetVisible(tx, ty, pz);
+				if (d) {
+					d->Draw(grid, x, y);
+				}
+			}
+		}
 	}
 }

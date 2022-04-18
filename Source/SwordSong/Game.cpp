@@ -10,9 +10,9 @@
 namespace SwordSong {
 	Game::Game(std::shared_ptr<TileGrid> grid) {
 		this->grid = grid;
-		this->world = std::make_unique<GameWorld>();
+		this->world = std::make_unique<GameWorld>(500, 500, 5);
 		this->player = std::make_shared<Player>();
-		this->view = std::make_unique<PlayerView>(player);
+		this->view = std::make_unique<PlayerView>(player, grid->GetWidth(), grid->GetHeight());;
 	}
 
 	Game::~Game() {

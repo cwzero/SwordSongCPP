@@ -1,9 +1,10 @@
 #pragma once
 
-#include "SwordSong/Drawable.h"
+#include "SwordSong/Entity.h"
 
 namespace SwordSong {
-    class Player : public Drawable {
+    class Player : public Entity {
         virtual ColoredTile GetTile() override;
+        virtual void Update() override;
     };
 }

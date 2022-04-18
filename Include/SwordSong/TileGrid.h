@@ -16,7 +16,18 @@ namespace SwordSong {
 
 		void Draw();
 
-		void GetSize(int *width, int *height);
+		inline void GetSize(int* width, int* height) {
+			*width = this->width;
+			*height = this->height;
+		}
+
+		inline int GetWidth() {
+			return width;
+		}
+
+		inline int GetHeight() {
+			return height;
+		}
 		
 		void SetTile(Tile tile, TileColor color, int x, int y);
 		void SetTile(Tile tile, TileColor color, TilePoint loc);

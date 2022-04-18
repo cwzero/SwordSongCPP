@@ -1,7 +1,6 @@
 add_executable(SwordSong 
     Main.cpp
-    SwordSong.cpp 
-    Drawable.cpp 
+    SwordSong.cpp
     Engine.cpp 
     Game.cpp 
     GameWorld.cpp 

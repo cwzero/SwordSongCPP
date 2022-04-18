@@ -28,11 +28,6 @@ namespace SwordSong {
 		tileSet->Load();
 	}
 
-	void TileGrid::GetSize(int *width, int *height) {
-		*width = this->width;
-		*height = this->height;
-	}
-
 	void TileGrid::Draw() {
 		tileSet->Use();
 
