@@ -1,4 +1,5 @@
 #include "SwordSong/Window.h"
+#include "SwordSong/Engine.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -6,8 +7,8 @@
 #include <iostream>
 
 namespace SwordSong {
-	Window::Window() {
-
+	Window::Window(Engine *engine) {
+		this->engine = engine;
 	}
 
 	Window::~Window() {
@@ -18,10 +19,13 @@ namespace SwordSong {
 		std::cerr << "Error: " << msg << std::endl;
 	}
 
-	static void glKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+	void Window::glKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
-		if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
+		}
+
+		engine->KeyEvent(getKey(window, key, scancode, action, mods));
 	}
 
 	void Window::Initialize() {
@@ -60,7 +64,13 @@ namespace SwordSong {
 			exit(EXIT_FAILURE);
 		}
 
-		glfwSetKeyCallback(window, glKeyCallback);
+		glfwSetWindowUserPointer(window, this);
+
+		auto func = [](GLFWwindow *window, int key, int scancode, int action, int mods) {
+			static_cast<Window*>(glfwGetWindowUserPointer(window))->glKeyCallback(window, key, scancode, action, mods);
+		};
+
+		glfwSetKeyCallback(window, func);
 	}
 
 	void Window::Shutdown() {

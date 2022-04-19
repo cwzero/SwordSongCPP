@@ -19,24 +19,29 @@ namespace SwordSong {
 		}
 	}
 
+    bool GameWorld::IsValid(int x, int y, int z) {
+		return (x >= 0 && x < width)
+			&& (y >= 0 && y < height)
+			&& (z >= 0 && z < depth);
+	}
+
 	Drawable* GameWorld::GetVisible(int x, int y, int z) {
-		if ((x < 0 || x > width)
-			|| (y < 0 || y > height)
-			|| (z < 0 || z > depth)) {
+		if (!IsValid(x, y, z))
 			return nullptr;
-		}
 		return world[z][y][x];
 	}
 
 	void GameWorld::SetVisible(int x, int y, int z, Drawable* drawable) {
-		if (!drawable)
+		if (!IsValid(x, y, z))
 			return;
-
-		if ((x < 0 || x > width)
-			|| (y < 0 || y > height)
-			|| (z < 0 || z > depth)) {
-			return;
-		}
 		world[z][y][x] = drawable;
+	}
+	
+	void GameWorld::Remove(int x, int y, int z, Drawable* drawable) {
+		if (!IsValid(x, y, z))
+			return;
+		if (world[z][y][x] == drawable) {
+			world[z][y][x] = nullptr;
+		}
 	}
 }

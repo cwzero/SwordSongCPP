@@ -20,11 +20,15 @@ namespace SwordSong {
             return depth;
         }
 
+        bool IsValid(int x, int y, int z);
+
         Drawable* GetVisible(int x, int y, int z);
 
         void SetVisible(int x, int y, int z, Drawable* drawable);
+
+        void Remove(int x, int y, int z, Drawable* drawable);
     private:
-        int width, height, depth;
+        int width = 0, height = 0, depth = 0;
         Drawable**** world;
     };
 }

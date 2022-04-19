@@ -12,7 +12,7 @@
 
 namespace SwordSong {
 	Engine::Engine() {
-		window = std::make_unique<Window>();
+		this->window = std::make_unique<Window>(this);
 	}
 
 	Engine::~Engine() {
@@ -74,5 +74,9 @@ namespace SwordSong {
 	void Engine::Render(double delta) {
 		game->Render(delta);
 		renderEngine->Draw();
+	}
+
+	void Engine::KeyEvent(Key key) {
+		game->KeyEvent(key);
 	}
 }

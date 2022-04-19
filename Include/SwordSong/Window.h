@@ -5,9 +5,10 @@
 struct GLFWwindow;
 
 namespace SwordSong {
+	class Engine;
 	class Window {
 	public:
-		Window();
+		Window(Engine *engine);
 		~Window();
 
 		void Initialize();
@@ -23,7 +24,10 @@ namespace SwordSong {
 
 		bool ShouldClose();
 	private:
+		Engine *engine;
 		GLFWwindow* window;
+
+		void glKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	};
 }
 

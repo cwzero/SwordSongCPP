@@ -5,7 +5,9 @@ add_executable(SwordSong
     Entity.cpp
     Game.cpp 
     GameWorld.cpp 
+    KeyEvent.cpp
     Model.cpp 
+    Movable.cpp
     Player.cpp 
     PlayerView.cpp 
     RenderEngine.cpp 
