@@ -2,6 +2,7 @@ add_executable(SwordSong
     Main.cpp
     SwordSong.cpp
     Engine.cpp 
+    Entity.cpp
     Game.cpp 
     GameWorld.cpp 
     Model.cpp 

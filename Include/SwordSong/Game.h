@@ -18,7 +18,7 @@ namespace SwordSong {
 			void Update();
 			void Render(double delta);
 		private:
-			std::unique_ptr<GameWorld> world;
+			std::shared_ptr<GameWorld> world;
 			std::shared_ptr<Player> player;
 			std::unique_ptr<PlayerView> view;
 			std::shared_ptr<TileGrid> grid;

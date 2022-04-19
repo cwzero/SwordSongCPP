@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 namespace SwordSong {
     class Drawable;
     class GameWorld {
@@ -19,6 +21,8 @@ namespace SwordSong {
         }
 
         Drawable* GetVisible(int x, int y, int z);
+
+        void SetVisible(int x, int y, int z, Drawable* drawable);
     private:
         int width, height, depth;
         Drawable**** world;
