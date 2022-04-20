@@ -28,6 +28,8 @@ namespace SwordSong {
 		inline int GetHeight() {
 			return height;
 		}
+
+		void Clear();
 		
 		void SetTile(Tile tile, TileColor color, int x, int y);
 		void SetTile(Tile tile, TileColor color, TilePoint loc);

@@ -19,6 +19,16 @@ namespace SwordSong {
 		}
 	}
 
+	GameWorld::~GameWorld() {
+		for (int z = 0; z < depth; z++) {
+			for (int y = 0; y < height; y++) {
+				delete world[z][y];
+			}
+			delete world[z];
+		}
+		delete world;
+	}
+
     bool GameWorld::IsValid(int x, int y, int z) {
 		return (x >= 0 && x < width)
 			&& (y >= 0 && y < height)

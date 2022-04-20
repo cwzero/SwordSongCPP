@@ -31,12 +31,15 @@ namespace SwordSong {
 	void Game::Update() {
 		static bool added = false;
 		if (!added) {
-			player->AddToWorld(world.get(), 0, 0, 0);
+			player->AddToWorld(world.get(), 250, 250, 0);
+			view->SetPosition(250, 250, 0);
 			added = true;
 		}
+		this->view->Update();
 	}
 
 	void Game::Render(double delta) {
+		grid->Clear();
 		this->view->Render(*world, *grid);
 	}
 	

@@ -7,6 +7,7 @@ namespace SwordSong {
     class GameWorld {
     public:
         GameWorld(int width, int height, int depth);
+        ~GameWorld();
 
         inline int GetWidth() {
             return width;

@@ -21,7 +21,18 @@ namespace SwordSong {
 	}
 
 	TileGrid::~TileGrid() {
+		for (int i = 0; i < this->width; i++) {
+			delete grid[i];
+		}
 		delete grid;		
+	}
+
+	void TileGrid::Clear() {
+		for (int i = 0; i < this->width; i++) {
+			for (int j = 0; j < this->height; j++) {
+				this->grid[i][j] = { {0, 0}, {0, 0, 0} };
+			}
+		}
 	}
 
 	void TileGrid::Load() {
