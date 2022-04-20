@@ -22,11 +22,11 @@ namespace SwordSong {
 	GameWorld::~GameWorld() {
 		for (int z = 0; z < depth; z++) {
 			for (int y = 0; y < height; y++) {
-				delete world[z][y];
+				delete[] world[z][y];
 			}
-			delete world[z];
+			delete[] world[z];
 		}
-		delete world;
+		delete[] world;
 	}
 
     bool GameWorld::IsValid(int x, int y, int z) {

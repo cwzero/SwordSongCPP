@@ -6,6 +6,7 @@ add_executable(SwordSong
     Game.cpp 
     GameWorld.cpp 
     KeyEvent.cpp
+    LayeredTile.cpp
     Model.cpp 
     Movable.cpp
     Player.cpp 
