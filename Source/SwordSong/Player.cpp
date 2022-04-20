@@ -6,7 +6,7 @@ namespace SwordSong {
         this->world = world;
     }
 
-    ColoredTile Player::GetTile() {
+    ColoredTile Player::GetTile() const {
         return {{0, 4}, {1, 1, 1}};
     }
 

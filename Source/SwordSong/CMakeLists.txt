@@ -12,6 +12,7 @@ add_executable(SwordSong
     PlayerView.cpp 
     RenderEngine.cpp 
     Shader.cpp 
+    StaticTile.cpp
     TileGrid.cpp 
     TileSet.cpp 
     Window.cpp)

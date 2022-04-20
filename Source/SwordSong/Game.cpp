@@ -3,6 +3,7 @@
 #include "SwordSong/KeyEvent.h"
 #include "SwordSong/Player.h"
 #include "SwordSong/PlayerView.h"
+#include "SwordSong/StaticTile.h"
 #include "SwordSong/TileGrid.h"
 
 #include <glad/glad.h>
@@ -31,8 +32,16 @@ namespace SwordSong {
 	void Game::Update() {
 		static bool added = false;
 		if (!added) {
+			StaticTile *floor = new StaticTile({{0, 11}, {0, 1, 0}});
+			for (int x = -10; x < 11; x++) {
+				for (int y = -10; y < 11; y++) {
+					world->SetVisible(250+x, 250+y, 0, floor);
+				}
+			}
+
 			player->AddToWorld(world.get(), 250, 250, 0);
 			view->SetPosition(250, 250, 0);
+
 			added = true;
 		}
 		this->view->Update();

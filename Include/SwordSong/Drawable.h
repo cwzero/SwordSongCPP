@@ -6,14 +6,14 @@
 namespace SwordSong {
 	class Drawable {
 	public:
-		virtual ColoredTile GetTile() {
+		virtual ColoredTile GetTile() const {
 			return {{0, 0}, {0, 0, 0}};
 		}
 
-		inline virtual void Draw(TileGrid& grid, int x, int y) {
+		inline virtual void Draw(TileGrid& grid, int x, int y) const {
 			grid.SetTile(GetTile(), x, y);
 		}
-		inline virtual void Draw(TileGrid& grid, TilePoint loc) {
+		inline virtual void Draw(TileGrid& grid, TilePoint loc) const {
 			grid.SetTile(GetTile(), loc);
 		}
 	};
