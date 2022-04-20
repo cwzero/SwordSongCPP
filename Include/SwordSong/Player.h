@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SwordSong/Movable.h"
+#include <memory>
 
 namespace SwordSong {
     class GameWorld;
