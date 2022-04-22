@@ -7,7 +7,7 @@
 #include <iostream>
 
 namespace SwordSong {
-	Window::Window(Engine *engine) {
+	Window::Window(Engine* engine) {
 		this->engine = engine;
 	}
 
@@ -21,17 +21,18 @@ namespace SwordSong {
 
 	void Window::glKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
-		if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
-			glfwSetWindowShouldClose(window, GLFW_TRUE);
+		if (action == GLFW_PRESS || action == GLFW_REPEAT) {
+			if (action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
+				glfwSetWindowShouldClose(window, GLFW_TRUE);
+			}
+			engine->KeyEvent(getKey(window, key, scancode, action, mods));
 		}
-
-		engine->KeyEvent(getKey(window, key, scancode, action, mods));
 	}
 
 	void Window::Initialize() {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-    	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 		glfwSetErrorCallback(glErrorCallback);
 
@@ -48,13 +49,10 @@ namespace SwordSong {
 
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-		// TODO: find a size that is close, and is appropriate to hold a tile grid
-		// TODO: pass window size into tilegrid
-
 		int w = (int)(mode->width * 0.8);
 		w -= (w % 16);
 
-		int h = (int)(mode -> height * 0.8);
+		int h = (int)(mode->height * 0.8);
 		h -= (h % 16);
 
 		window = glfwCreateWindow(w, h, "Sword Song", NULL, NULL);
@@ -66,7 +64,7 @@ namespace SwordSong {
 
 		glfwSetWindowUserPointer(window, this);
 
-		auto func = [](GLFWwindow *window, int key, int scancode, int action, int mods) {
+		auto func = [](GLFWwindow* window, int key, int scancode, int action, int mods) {
 			static_cast<Window*>(glfwGetWindowUserPointer(window))->glKeyCallback(window, key, scancode, action, mods);
 		};
 
@@ -84,7 +82,7 @@ namespace SwordSong {
 		glfwSwapInterval(1);
 
 		int width, height;
-		GetSize(&width, &height);		
+		GetSize(&width, &height);
 		glViewport(0, 0, width, height);
 
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -114,7 +112,7 @@ namespace SwordSong {
 		return glfwWindowShouldClose(window);
 	}
 
-	void Window::GetSize(int *width, int *height) {
+	void Window::GetSize(int* width, int* height) {
 		glfwGetWindowSize(window, width, height);
 	}
 }

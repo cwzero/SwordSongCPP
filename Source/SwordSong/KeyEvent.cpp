@@ -7,26 +7,26 @@ namespace SwordSong {
 	Key getKey(GLFWwindow* window, int key, int scancode, int action, int mods) {
 		switch (key) {
 		case GLFW_KEY_UP:
-			return Up;
+			return Key::Up;
 			break;
 		case GLFW_KEY_RIGHT:
-			return Right;
+			return Key::Right;
 			break;
 		case GLFW_KEY_DOWN:
-			return Down;
+			return Key::Down;
 			break;
 		case GLFW_KEY_LEFT:
-			return Left;
+			return Key::Left;
 			break;
 		case GLFW_KEY_COMMA:
-			return Comma;
+			return Key::Comma;
 			break;
 		case GLFW_KEY_PERIOD:
-			return Period;
+			return Key::Period;
 		default:
-			return Unknown;
+			return Key::Unknown;
 		}
 
-		return Unknown;
+		return Key::Unknown;
 	}
 }

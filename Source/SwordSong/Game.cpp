@@ -54,22 +54,22 @@ namespace SwordSong {
 	
 	void Game::KeyEvent(Key key) {
 		switch (key) {
-			case Up:
+			case Key::Up:
 				player->MoveNorth();
 				break;
-			case Right:
+			case Key::Right:
 				player->MoveEast();
 				break;
-			case Down:
+			case Key::Down:
 				player->MoveSouth();
 				break;
-			case Left:
+			case Key::Left:
 				player->MoveWest();
 				break;
-			case Comma:
+			case Key::Comma:
 				player->MoveDown();
 				break;
-			case Period:
+			case Key::Period:
 				player->MoveUp();
 				break;
 			default:

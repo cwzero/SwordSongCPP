@@ -3,7 +3,7 @@
 #include <memory>
 
 namespace SwordSong {
-	enum Key;
+	enum class Key;
 	class GameWorld;
 	class Player;
 	class PlayerView;

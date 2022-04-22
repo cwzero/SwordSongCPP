@@ -3,7 +3,7 @@
 struct GLFWwindow;
 
 namespace SwordSong {
-	enum Key {
+	enum class Key {
 		Unknown, Up, Right, Down, Left, Comma, Period
 	};
 
