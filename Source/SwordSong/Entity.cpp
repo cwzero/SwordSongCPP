@@ -12,7 +12,7 @@ namespace SwordSong {
 		this->world = world;
 
 		if (world) {
-			world->SetVisible(x, y, z, this);
+			world->SetForeground(x, y, z, this);
 			this->x = x;
 			this->y = y;
 			this->z = z;
@@ -21,7 +21,7 @@ namespace SwordSong {
 
 	void Entity::RemoveFromWorld(GameWorld *world) {
 		if (world) {
-			world->Remove(x, y, z, this);
+			world->RemoveForeground(x, y, z, this);
 		}
 	}
 }

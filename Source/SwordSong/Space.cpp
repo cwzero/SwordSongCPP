@@ -24,20 +24,34 @@ namespace SwordSong {
     void Space::SetForeground(Drawable *fg) {
         this->foreground = fg;
     }
+    
+    void Space::ClearForeground() {
+        this->foreground = nullptr;
+    }
 
-    void Space::PushMidground(Drawable *mg) {
+    void Space::PushMidground(Drawable &mg) {
         midground->Push(mg);
     }
 
-    Drawable *Space::PopMidground() {
-        return midground->Pop();
+    Drawable& Space::PopMidground() {
+        Drawable& result = midground->Top();
+        midground->Pop();
+        return result;
     }
 
-    void Space::RemoveMidground(Drawable *mg) {
+    void Space::ClearMidground() {
+        midground->Clear();
+    }
+
+    void Space::RemoveMidground(Drawable& mg) {
         midground->Remove(mg);
     }
 
     void Space::SetBackground(Drawable *bg) {
         background = bg;
+    }
+
+    void Space::ClearBackground() {
+        background = nullptr;
     }
 }

@@ -7,6 +7,6 @@ namespace SwordSong {
 	}
 
 	void Drawable::Draw(TileGrid& grid, int x, int y) const {
-		grid.SetTile(GetTile(), x, y);		
+		grid.SetTile(GetTile(), x, y);
 	}
 }

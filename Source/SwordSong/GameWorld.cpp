@@ -7,11 +7,11 @@ namespace SwordSong {
 		this->height = height;
 		this->depth = depth;
 
-		world = new Drawable * **[depth];
+		world = new Space***[depth];
 		for (int z = 0; z < depth; z++) {
-			world[z] = new Drawable * *[height];
+			world[z] = new Space**[height];
 			for (int y = 0; y < height; y++) {
-				world[z][y] = new Drawable * [width];
+				world[z][y] = new Space*[width];
 				for (int x = 0; x < width; x++) {
 					world[z][y][x] = nullptr;
 				}
@@ -36,22 +36,61 @@ namespace SwordSong {
 	}
 
 	Drawable* GameWorld::GetVisible(int x, int y, int z) {
-		if (!IsValid(x, y, z))
-			return nullptr;
-		return world[z][y][x];
+		return GetSpace(x, y, z);
 	}
 
-	void GameWorld::SetVisible(int x, int y, int z, Drawable* drawable) {
+	void GameWorld::SetForeground(int x, int y, int z, Drawable* drawable) {
+		Space* space = GetSpace(x, y, z);
+		if (space) {
+			space->SetForeground(drawable);
+		}
+	}
+
+	void GameWorld::SetMidground(int x, int y, int z, Drawable* drawable) {
+		Space* space = GetSpace(x, y, z);
+		if (space) {
+			space->PushMidground(*drawable);
+		}
+	}
+
+	void GameWorld::SetBackground(int x, int y, int z, Drawable* drawable) {
+		Space* space = GetSpace(x, y, z);
+		if (space) {
+			space->SetBackground(drawable);
+		}
+	}
+
+	Space* GameWorld::GetSpace(int x, int y, int z) {
 		if (!IsValid(x, y, z))
-			return;
-		world[z][y][x] = drawable;
+			return nullptr;
+		
+		if (world[z][y][x] == nullptr) {
+			world[z][y][x] = new Space();
+		}
+
+		return world[z][y][x];
 	}
 	
-	void GameWorld::Remove(int x, int y, int z, Drawable* drawable) {
-		if (!IsValid(x, y, z))
-			return;
-		if (world[z][y][x] == drawable) {
-			world[z][y][x] = nullptr;
+	void GameWorld::RemoveForeground(int x, int y, int z, Drawable* drawable) {
+		Space* space = GetSpace(x, y, z);
+		if (space) {
+			if (space->GetForeground() == drawable) {
+				space->ClearForeground();
+			}
+		}
+	}
+
+	void GameWorld::RemoveMidground(int x, int y, int z, Drawable* drawable) {
+		Space* space = GetSpace(x, y, z);
+		if (space) {
+			space->RemoveMidground(*drawable);
+		}
+	}
+
+	void GameWorld::RemoveBackground(int x, int y, int z, Drawable* drawable) {
+		Space* space = GetSpace(x, y, z);
+		if (space && space->GetBackground() == drawable) {
+			space->ClearBackground();
 		}
 	}
 }

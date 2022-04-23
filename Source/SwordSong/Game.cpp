@@ -35,7 +35,7 @@ namespace SwordSong {
 			StaticTile *floor = new StaticTile({{0, 11}, {0, 1, 0}});
 			for (int x = -10; x < 11; x++) {
 				for (int y = -10; y < 11; y++) {
-					world->SetVisible(250+x, 250+y, 0, floor);
+					world->SetBackground(250+x, 250+y, 0, floor);
 				}
 			}
 

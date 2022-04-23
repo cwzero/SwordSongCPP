@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include "SwordSong/Space.h"
 
 namespace SwordSong {
     class Drawable;
@@ -25,11 +26,17 @@ namespace SwordSong {
 
         Drawable* GetVisible(int x, int y, int z);
 
-        void SetVisible(int x, int y, int z, Drawable* drawable);
+        void SetForeground(int x, int y, int z, Drawable* drawable);
+        void SetMidground(int x, int y, int z, Drawable* drawable);
+        void SetBackground(int x, int y, int z, Drawable* drawable);
 
-        void Remove(int x, int y, int z, Drawable* drawable);
+        void RemoveForeground(int x, int y, int z, Drawable* drawable);
+        void RemoveMidground(int x, int y, int z, Drawable* drawable);
+        void RemoveBackground(int x, int y, int z, Drawable* drawable);
     private:
+        Space* GetSpace(int x, int y, int z);
+
         int width = 0, height = 0, depth = 0;
-        Drawable**** world;
+        Space**** world;
     };
 }

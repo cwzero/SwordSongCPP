@@ -12,14 +12,25 @@ namespace SwordSong {
 
 		virtual void Draw(TileGrid& grid, int x, int y) const override;
 
-        virtual void SetForeground(Drawable *fg);
-        virtual void PushMidground(Drawable *mg);
-        virtual Drawable* PopMidground();
-        virtual void RemoveMidground(Drawable *mg);
-        virtual void SetBackground(Drawable *bg);
+        virtual inline Drawable* GetForeground() const {
+            return foreground;
+        }
+
+        virtual inline Drawable* GetBackground() const {
+            return background;
+        }
+
+        virtual void SetForeground(Drawable* fg);
+        virtual void ClearForeground();
+        virtual void PushMidground(Drawable& mg);
+        virtual Drawable& PopMidground();
+        virtual void ClearMidground();
+        virtual void RemoveMidground(Drawable& mg);
+        virtual void SetBackground(Drawable* bg);
+        virtual void ClearBackground();
     private:
-        Drawable *foreground;
+        Drawable* foreground;
         std::unique_ptr<StackTile> midground;
-        Drawable *background;
+        Drawable* background;
     };
 }
