@@ -10,6 +10,10 @@ namespace SwordSong {
         return {{0, 4}, {1, 1, 1}};
     }
 
+    bool Player::IsSolid() const {
+        return true;
+    }
+
     void Player::Update() {
         
     }

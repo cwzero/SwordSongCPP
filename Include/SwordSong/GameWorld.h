@@ -27,6 +27,10 @@ namespace SwordSong {
         
         Drawable* GetVisible(int x, int y, int z);
 
+        Drawable* GetForeground(int x, int y, int z);
+        Drawable* GetMidground(int x, int y, int z);
+        Drawable* GetBackground(int x, int y, int z);
+
         void SetForeground(int x, int y, int z, Drawable* drawable);
         void SetMidground(int x, int y, int z, Drawable* drawable);
         void SetBackground(int x, int y, int z, Drawable* drawable);

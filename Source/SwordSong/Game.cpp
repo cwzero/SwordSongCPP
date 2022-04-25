@@ -1,4 +1,5 @@
 #include "SwordSong/Game.h"
+#include "SwordSong/Drawing.h"
 #include "SwordSong/GameWorld.h"
 #include "SwordSong/KeyEvent.h"
 #include "SwordSong/Player.h"
@@ -22,7 +23,7 @@ namespace SwordSong {
 	}
 
 	void Game::Initialize() {
-		
+
 	}
 
 	void Game::Shutdown() {
@@ -32,12 +33,16 @@ namespace SwordSong {
 	void Game::Update() {
 		static bool added = false;
 		if (!added) {
+			/*
 			StaticTile *floor = new StaticTile({{0, 11}, {0, 1, 0}});
 			for (int x = -10; x < 11; x++) {
 				for (int y = -10; y < 11; y++) {
 					world->SetBackground(250+x, 250+y, 0, floor);
 				}
 			}
+			*/
+
+			DrawRoom(*world, { 0, 0, 1 }, { 0, 1, 0 }, { 245, 245, 0, 10, 10 });
 
 			player->AddToWorld(world.get(), 250, 250, 0);
 			view->SetPosition(250, 250, 0);
@@ -51,29 +56,29 @@ namespace SwordSong {
 		grid->Clear();
 		this->view->Render(*world, *grid);
 	}
-	
+
 	void Game::KeyEvent(Key key) {
 		switch (key) {
-			case Key::Up:
-				player->MoveNorth();
-				break;
-			case Key::Right:
-				player->MoveEast();
-				break;
-			case Key::Down:
-				player->MoveSouth();
-				break;
-			case Key::Left:
-				player->MoveWest();
-				break;
-			case Key::Comma:
-				player->MoveDown();
-				break;
-			case Key::Period:
-				player->MoveUp();
-				break;
-			default:
-				break;
+		case Key::Up:
+			player->MoveNorth();
+			break;
+		case Key::Right:
+			player->MoveEast();
+			break;
+		case Key::Down:
+			player->MoveSouth();
+			break;
+		case Key::Left:
+			player->MoveWest();
+			break;
+		case Key::Comma:
+			player->MoveDown();
+			break;
+		case Key::Period:
+			player->MoveUp();
+			break;
+		default:
+			break;
 		}
 	}
 }

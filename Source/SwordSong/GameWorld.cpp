@@ -22,6 +22,9 @@ namespace SwordSong {
 	GameWorld::~GameWorld() {
 		for (int z = 0; z < depth; z++) {
 			for (int y = 0; y < height; y++) {
+				for (int x = 0; x < width; x++) {
+					delete world[z][y][x];
+				}
 				delete[] world[z][y];
 			}
 			delete[] world[z];
@@ -40,11 +43,25 @@ namespace SwordSong {
 			return false;
 		}
 		Drawable* visible = GetVisible(x, y, z);
-		return (visible != nullptr) && visible->IsSolid();
+		Drawable* background = GetBackground(x, y, z);
+		return ((visible != nullptr) && visible->IsSolid())
+			|| ((background != nullptr) && background->IsSolid());
 	}
 
 	Drawable* GameWorld::GetVisible(int x, int y, int z) {
 		return GetSpace(x, y, z);
+	}
+	
+	Drawable* GameWorld::GetForeground(int x, int y, int z) {
+		return GetSpace(x, y, z)->GetForeground();
+	}
+
+	Drawable* GameWorld::GetMidground(int x, int y, int z) {
+		return GetSpace(x, y, z)->GetMidground();
+	}
+
+	Drawable* GameWorld::GetBackground(int x, int y, int z) {
+		return GetSpace(x, y, z)->GetBackground();
 	}
 
 	void GameWorld::SetForeground(int x, int y, int z, Drawable* drawable) {

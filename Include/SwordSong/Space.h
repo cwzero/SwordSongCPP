@@ -20,6 +20,10 @@ namespace SwordSong {
             return background;
         }
 
+        virtual inline Drawable* GetMidground() const {
+            return midground.get();
+        }
+
         virtual void SetForeground(Drawable* fg);
         virtual void ClearForeground();
         virtual void PushMidground(Drawable& mg);
