@@ -1,5 +1,6 @@
 #include "SwordSong/Drawing.h"
 #include "SwordSong/Drawable.h"
+#include "SwordSong/LayeredTile.h"
 #include "SwordSong/StaticTile.h"
 
 using namespace SwordSong;
@@ -18,6 +19,28 @@ RoomTiles MakeRoomTiles(TileColor wallColor, TileColor floorColor) {
 	RoomTiles result = {};
 
 	result.Floor = new StaticTile({ {0, 11}, floorColor });
+
+	/*ColoredTile FullCover = { {11, 13}, {} };
+	ColoredTile SCover = { {12, 13}, {} };
+	ColoredTile WCover = { {13, 13}, {} };
+	ColoredTile ECover = { {14, 13}, {} };
+	ColoredTile NCover = { {15, 13}, {} };*/
+
+	/*LayeredTile* lt = new LayeredTile(4);
+	lt->SetLayer(0, result.Floor);
+	lt->SetLayer(1, new StaticTile(NCover));
+	lt->SetLayer(2, new StaticTile(ECover));
+	lt->SetLayer(3, new StaticTile({ {15, 11}, wallColor }, true));
+	result.NECorner = lt;*/
+
+	/*LayeredTile* lt = new LayeredTile(2);
+	ColoredTile back = {{0, 0}, {1, 0, 0}};
+	ColoredTile front = {{12, 13}, {0, 0, 1}};
+
+	lt->SetLayer(0, new StaticTile(back));
+	lt->SetLayer(1, new StaticTile(front));
+	result.NECorner = lt;*/
+
 	result.NECorner = new StaticTile({ {15, 11}, wallColor }, true);
 	result.NWCorner = new StaticTile({ {10, 13}, wallColor }, true);
 	result.SWCorner = new StaticTile({ {0, 12}, wallColor }, true);

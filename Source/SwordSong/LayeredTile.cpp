@@ -16,6 +16,9 @@ namespace SwordSong {
 	}
 
 	LayeredTile::~LayeredTile() {
+		for (int i = 0; i < layers; i++) {
+			delete layer[i];
+		}
 		delete[] layer;
 	}
 
