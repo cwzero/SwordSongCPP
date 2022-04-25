@@ -35,6 +35,14 @@ namespace SwordSong {
 			&& (z >= 0 && z < depth);
 	}
 
+	bool GameWorld::IsSolid(int x, int y, int z) {
+		if (!IsValid(x, y, z)) {
+			return false;
+		}
+		Drawable* visible = GetVisible(x, y, z);
+		return (visible != nullptr) && visible->IsSolid();
+	}
+
 	Drawable* GameWorld::GetVisible(int x, int y, int z) {
 		return GetSpace(x, y, z);
 	}

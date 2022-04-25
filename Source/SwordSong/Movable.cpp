@@ -34,8 +34,10 @@ namespace SwordSong {
 
 	void Movable::MoveTo(int x, int y, int z) {
 		if (world && world->IsValid(x, y, z)) {
-			RemoveFromWorld(world);
-			AddToWorld(world, x, y, z);
+			if (!IsSolid() || !world->IsSolid(x, y, z)) {
+				RemoveFromWorld(world);
+				AddToWorld(world, x, y, z);
+			}
 		}
 	}
 }

@@ -7,6 +7,9 @@ namespace SwordSong {
 	class Drawable {
 	public:
 		virtual ColoredTile GetTile() const;
+		virtual bool IsSolid() const {
+			return false;
+		}
 		virtual void Draw(TileGrid& grid, int x, int y) const;
 	private:
 	};

@@ -23,7 +23,8 @@ namespace SwordSong {
         }
 
         bool IsValid(int x, int y, int z);
-
+        bool IsSolid(int x, int y, int z);
+        
         Drawable* GetVisible(int x, int y, int z);
 
         void SetForeground(int x, int y, int z, Drawable* drawable);
