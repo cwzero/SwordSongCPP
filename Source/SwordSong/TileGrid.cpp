@@ -55,7 +55,12 @@ namespace SwordSong {
 
 	void TileGrid::SetTile(ColoredTile tile, int x, int y) {
 		int xm = width/2, ym = height/2;
-		this->grid[x + xm][y + ym] = tile;
+		int dx = x + xm;
+		int dy = y + ym;
+		if (dx < 0 || dx > width || dy < 0 || dy > height) {
+			return;
+		}
+		this->grid[dx][dy] = tile;
 	}
 
 	void TileGrid::SetTile(ColoredTile tile, TilePoint loc) {

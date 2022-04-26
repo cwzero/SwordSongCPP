@@ -1,5 +1,6 @@
 add_executable(SwordSong 
     Main.cpp
+    BSPGenerator.cpp
     SwordSong.cpp
     Drawable.cpp
     Drawing.cpp
@@ -7,6 +8,7 @@ add_executable(SwordSong
     Entity.cpp
     Game.cpp 
     GameWorld.cpp 
+    Generator.cpp
     KeyEvent.cpp
     LayeredTile.cpp
     Model.cpp 

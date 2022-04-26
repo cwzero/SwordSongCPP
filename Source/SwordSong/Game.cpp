@@ -1,4 +1,5 @@
 #include "SwordSong/Game.h"
+#include "SwordSong/BSPGenerator.h"
 #include "SwordSong/Drawing.h"
 #include "SwordSong/GameWorld.h"
 #include "SwordSong/KeyEvent.h"
@@ -42,7 +43,10 @@ namespace SwordSong {
 			}
 			*/
 
-			DrawRoom(*world, { 0, 0, 1 }, { 0, 1, 0 }, { 245, 245, 0, 10, 10 });
+			//DrawRoom(*world, { 0, 0, 1 }, { 0, 1, 0 }, { 245, 245, 0, 10, 10 });
+
+			BSPGenerator* gen = new BSPGenerator();
+			gen->Generate(*world);
 
 			player->AddToWorld(world.get(), 250, 250, 0);
 			view->SetPosition(250, 250, 0);
