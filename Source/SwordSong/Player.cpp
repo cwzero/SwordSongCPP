@@ -11,7 +11,8 @@ namespace SwordSong {
     }
 
     bool Player::IsSolid() const {
-        return true;
+        //return true;
+        return false;
     }
 
     void Player::Update() {
