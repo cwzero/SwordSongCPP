@@ -2,18 +2,27 @@
 
 #include <memory>
 
-namespace SwordSong::BSP {
-    class BSPNode;
+namespace SwordSong {
+	class GameWorld;
+	namespace BSP {
+		class BSPNode;
 
-    class BSPTree {
-    public:
-        BSPTree(int width, int height);
-        ~BSPTree();
+		typedef void (*BSPCallback)(GameWorld& world, BSPNode* node);
 
-        inline BSPNode* GetRoot() {
-            return root.get();
-        }
-    private:
-        std::unique_ptr<BSPNode> root;
-    };
+		class BSPTree {
+		public:
+			BSPTree(int width, int height);
+			~BSPTree();
+
+			inline BSPNode* GetRoot() {
+				return root.get();
+			}
+
+			void Split();
+			void Iterate(GameWorld& world, BSPCallback callback);
+			void Connect();
+		private:
+			std::unique_ptr<BSPNode> root;
+		};
+	}
 }
