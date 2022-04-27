@@ -1,4 +1,4 @@
-#include "SwordSong/BSPGenerator.h"
+#include "SwordSong/BSP/BSPGenerator.h"
 #include "SwordSong/GameWorld.h"
 #include "SwordSong/Drawing.h"
 
@@ -7,6 +7,7 @@
 #include <random>
 
 using namespace SwordSong;
+using namespace SwordSong::BSP;
 
 typedef void (*BSPCallback) (GameWorld& world, Room room);
 

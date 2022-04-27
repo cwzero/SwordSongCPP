@@ -1,21 +1,21 @@
 #include "SwordSong/StaticTile.h"
 
-namespace SwordSong {
-    StaticTile::StaticTile(ColoredTile tile) {
-        this->tile = tile;
-        this->solid = false;
-    }
+using namespace SwordSong;
 
-    StaticTile::StaticTile(ColoredTile tile, bool solid) {
-        this->tile = tile;
-        this->solid = solid;
-    }
+StaticTile::StaticTile(ColoredTile tile) {
+	this->tile = tile;
+	this->solid = false;
+}
 
-    bool StaticTile::IsSolid() const {
-        return this->solid;
-    }
+StaticTile::StaticTile(ColoredTile tile, bool solid) {
+	this->tile = tile;
+	this->solid = solid;
+}
 
-    ColoredTile StaticTile::GetTile() const {
-        return this->tile;
-    }
+bool StaticTile::IsSolid() const {
+	return this->solid;
+}
+
+ColoredTile StaticTile::GetTile() const {
+	return this->tile;
 }

@@ -1,21 +1,21 @@
 #include "SwordSong/Player.h"
 #include "SwordSong/GameWorld.h"
 
-namespace SwordSong {
-    Player::Player(std::shared_ptr<GameWorld> world) {
-        this->world = world;
-    }
+using namespace SwordSong;
 
-    ColoredTile Player::GetTile() const {
-        return {{0, 4}, {1, 1, 1}};
-    }
+Player::Player(std::shared_ptr<GameWorld> world) {
+	this->world = world;
+}
 
-    bool Player::IsSolid() const {
-        //return true;
-        return false;
-    }
+ColoredTile Player::GetTile() const {
+	return { {0, 4}, {1, 1, 1} };
+}
 
-    void Player::Update() {
-        
-    }
+bool Player::IsSolid() const {
+	//return true;
+	return false;
+}
+
+void Player::Update() {
+
 }

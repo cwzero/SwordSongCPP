@@ -4,6 +4,4 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-namespace SwordSong {
-
-}
+using namespace SwordSong;

@@ -1,57 +1,59 @@
 #include "SwordSong/Space.h"
 
-namespace SwordSong {
-    Space::Space() {
-        foreground = nullptr;
-        midground = std::make_unique<StackTile>();
-        background = nullptr;
-    }
+using namespace SwordSong;
 
-	void Space::Draw(TileGrid& grid, int x, int y) const {
-        if (foreground) {
-            foreground->Draw(grid, x, y);
-        } else {
-            if (!midground->IsEmpty()) {
-                midground->Draw(grid, x, y);
-            } else {
-                if (background) {
-                    background->Draw(grid, x, y);
-                }
-            }
-        }
-    }
+Space::Space() {
+	foreground = nullptr;
+	midground = std::make_unique<StackTile>();
+	background = nullptr;
+}
 
-    void Space::SetForeground(Drawable *fg) {
-        this->foreground = fg;
-    }
-    
-    void Space::ClearForeground() {
-        this->foreground = nullptr;
-    }
+void Space::Draw(TileGrid& grid, int x, int y) const {
+	if (foreground) {
+		foreground->Draw(grid, x, y);
+	}
+	else {
+		if (!midground->IsEmpty()) {
+			midground->Draw(grid, x, y);
+		}
+		else {
+			if (background) {
+				background->Draw(grid, x, y);
+			}
+		}
+	}
+}
 
-    void Space::PushMidground(Drawable &mg) {
-        midground->Push(mg);
-    }
+void Space::SetForeground(Drawable* fg) {
+	this->foreground = fg;
+}
 
-    Drawable& Space::PopMidground() {
-        Drawable& result = midground->Top();
-        midground->Pop();
-        return result;
-    }
+void Space::ClearForeground() {
+	this->foreground = nullptr;
+}
 
-    void Space::ClearMidground() {
-        midground->Clear();
-    }
+void Space::PushMidground(Drawable& mg) {
+	midground->Push(mg);
+}
 
-    void Space::RemoveMidground(Drawable& mg) {
-        midground->Remove(mg);
-    }
+Drawable& Space::PopMidground() {
+	Drawable& result = midground->Top();
+	midground->Pop();
+	return result;
+}
 
-    void Space::SetBackground(Drawable *bg) {
-        background = bg;
-    }
+void Space::ClearMidground() {
+	midground->Clear();
+}
 
-    void Space::ClearBackground() {
-        background = nullptr;
-    }
+void Space::RemoveMidground(Drawable& mg) {
+	midground->Remove(mg);
+}
+
+void Space::SetBackground(Drawable* bg) {
+	background = bg;
+}
+
+void Space::ClearBackground() {
+	background = nullptr;
 }

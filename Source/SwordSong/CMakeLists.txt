@@ -1,6 +1,8 @@
 add_executable(SwordSong 
     Main.cpp
-    BSPGenerator.cpp
+    BSP/BSPGenerator.cpp
+    BSP/BSPNode.cpp
+    BSP/BSPTree.cpp
     SwordSong.cpp
     Drawable.cpp
     Drawing.cpp
